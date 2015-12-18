@@ -3,28 +3,9 @@
 #include <vector>
 #include <sstream>
 #include "list_menu.h"
+#include "string_utils.h"
 
-typedef std::vector<std::string> vstring;
 using namespace std;
-
-vstring split_string(string &input_string, const char delim)
-{
-        vstring result;
-        stringstream input_stream(input_string);
-        string input_item;
-        while(getline(input_stream, input_item, delim))
-        {
-                result.push_back(input_item);
-        };
-	return result;
-}
-
-string join(const vstring& vec, const char* delim)
-{
-    stringstream res;
-    copy(vec.begin(), vec.end(), ostream_iterator<string>(res, delim));
-    return res.str();
-}
 
 vector<vstring> parse_args(string &input_string)
 {
