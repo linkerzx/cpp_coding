@@ -6,17 +6,17 @@
 
 using namespace std;
 
-double row_processor(string &str_input, fileformat ff, double number)
+string row_processor(string &str_input, fileformat ff, int column_number)
 {
 	// converts the row to a vector string by delimiter
 	vstring str_proc = split_string(str_input, get_delimiter(ff));
 	// operations
 	// SUM of the second column
-	if(str_proc.size() >= 3){
+	if(str_proc.size() >= column_number){
 		//cout << stof(str_proc[2]) << endl;
-		return number + stod(str_proc[2]);
+		return str_proc[column_number];
 	}
-	return 0;
+	return "0";
 };
 
 int main() 
@@ -30,11 +30,12 @@ int main()
 	};
 	int i = 0;
 	double number = 0 ; 
-	while(inf){
+	while(!inf.eof()){
 		string str_sample_input; 
 		getline(inf, str_sample_input);
+		cout << str_sample_input << endl;
 		if(i > 0) {
-			number = row_processor(str_sample_input, CSV, number);
+			number += stod(row_processor(str_sample_input, CSV, 2));
 		}
 		i++;
 		outf << number << endl;
