@@ -10,10 +10,7 @@ string row_processor(string &str_input, fileformat ff, int column_number)
 {
 	// converts the row to a vector string by delimiter
 	vstring str_proc = split_string(str_input, get_delimiter(ff));
-	// operations
-	// SUM of the second column
 	if(str_proc.size() >= column_number){
-		//cout << stof(str_proc[2]) << endl;
 		return str_proc[column_number];
 	}
 	return "0";
