@@ -29,10 +29,12 @@ public:
 		delete _pTable;
 	}
 	void connect(skiplistElem* myElem) {
+		/* Might be better replaced by a call to Height */
 		int i=0;
 		while(_pTable[i]!=NULL)
 			i++;
 		_pTable[i] = myElem;
+		_Height = _Height++;		
 	}
 	void list_connectionsValues(void) {
 		for(int i=0;i<TABLE_SIZE;i++)

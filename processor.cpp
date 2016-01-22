@@ -16,12 +16,12 @@ vstring row_processor(string &str_input, fileformat ff)
 
 class data_file {
 	public: 
-		string path; 
-		fileformat ff;
-		bool has_header; 
-		vstring header;
+		string     m_path; 
+		fileformat m_ff;
+		bool       m_has_header; 
+		vstring    m_header;
 	private: 	
-	data_file(){
+	data_file(string path){
 		//contructor 
 	};
 };
@@ -51,16 +51,16 @@ int main()
 		getline(inf, str_sample_input);
 		cout << str_sample_input << endl;
 		if(row_count > 0) {
-			double row_result = stod(row_processor(str_sample_input, CSV)[2]);
+			double row_result = stod(row_processor(str_sample_input, CSV)[1]);
 			sum += row_result;
 			sum_squared += pow(row_result, 2);
-		}
-		row_count++;
-		outf << 
+			outf << 
 			row_count << get_delimiter(CSV) << 
 			sum << get_delimiter(CSV) << 
 			sum_squared <<  
 		endl;
+		}
+		row_count++;
 	};
 
 	return 0;	
